@@ -66,3 +66,6 @@ gem 'devise'
 
 # 環境変数用
 gem 'dotenv-rails'
+
+# enum日本語化用
+gem "enum_help"

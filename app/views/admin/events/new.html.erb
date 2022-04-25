@@ -9,7 +9,7 @@ admin/events/new.html.erb
   <div><%= f.number_field :limit, min: "1" %></div>
 
   <div><%= f.label :カテゴリー%></div>
-  <div><%= f.select :category, Event.categories, {prompt: "選択してください"} %></div>
+  <div><%= f.select :category, Event.categories_i18n.invert, {prompt: "選択してください"} %></div>
 
   <div><%= f.label :イベント名%></div>
   <div><%= f.text_field :title %></div>

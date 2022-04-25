@@ -1,0 +1,7 @@
+ja:
+  enums:
+    event:
+      category:
+        agriculture: "農業"
+        cooking: "料理"
+        craft: "クラフト"
