@@ -64,6 +64,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ログイン機能用
 gem 'devise'
 
+# devise日本語化用
+gem 'devise-i18n'
+
 # 環境変数用
 gem 'dotenv-rails'
 
