@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # =============== 会員用(URLに/public/不要な為、scope module) ===============
   devise_for :members
   scope module: :public do
+    root 'homes#top'
+    get 'about_me' => 'homes#about_me'
     resources :events, only:[:index, :show]
   end
 end
