@@ -1,0 +1,12 @@
+<%= form_with model: @contact, local: true do |f| %>
+  <div><%= f.label :お名前 %></div>
+  <div><%= f.text_field :name, placeholder: "　桜木健二", autofocus: true %></div>
+
+  <div><%= f.label :メールアドレス %></div>
+  <div><%= f.text_field :email, placeholder: "　sakuragi@kenji.co.jp" %></div>
+
+  <div><%= f.label :お問い合わせ内容 %></div>
+  <div><%= f.text_area :body %></div>
+
+  <div><%= f.submit "　送信　", data: {confirm: "本当に送信してもよろしいでしょうか。"} %></div>
+<% end %>

@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about_me' => 'homes#about_me'
     resources :events, only:[:index, :show]
+    resources :contacts, only:[:new, :create]
   end
 end
