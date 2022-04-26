@@ -1,1 +1,16 @@
-public/events/index.html.erb
+public/events/index.html.erb<br>
+イベント一覧ページ<br>
+
+<% @events.each do |event| %>
+  <% if event.is_available == true %>
+    受付中
+  <% else %>
+    受付終了
+  <% end %>
+  <%= event.date.strftime('%Y年%m月%d日 %H時%M分') %>
+  <%= event.category_i18n %>
+  <%= event.limit %>名
+  <%= event.title %>
+  <%= event.body %>
+  <%= link_to "詳細", event_path(event.id) %><br>
+<% end %>

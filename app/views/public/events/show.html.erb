@@ -1,1 +1,15 @@
-public/events/show.html.erb
+public/events/show.html.erb<br>
+イベント詳細ページ<br>
+
+<% if @event.is_available == true %>
+    受付中
+<% else %>
+    受付終了
+<% end %>
+<%= @event.date.strftime('%Y年%m月%d日 %H時%M分') %>
+<%= @event.category_i18n %>
+<%= @event.limit %>名
+<%= @event.title %>
+<%= @event.body %>
+<%= link_to "編集", edit_admin_event_path(@event.id) %>
+<%= link_to "削除", event_path(@event.id), method: :delete, data: {confirm: "本当に削除しますか？"} %>
