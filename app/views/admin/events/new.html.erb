@@ -1,5 +1,7 @@
 admin/events/new.html.erb
 
+<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+
 <!--新規投稿フォーム-->
 <%= form_with model: @event, local: true do |f| %>
   <div><%= f.label :イベント開催日%></div>
