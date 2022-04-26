@@ -1,7 +1,6 @@
 admin/events/new.html.erb<br>
 イベント新規投稿フォーム<br>
-
-
+<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
 <%= form_with model: ([:admin, @event]), local: true do |f| %>
   <div><%= f.label :イベント開催日%></div>
   <div><%= f.date_field :date %></div>

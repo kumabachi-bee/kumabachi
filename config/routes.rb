@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
   # =============== 管理者用(URLに/admin/を付与する為、namespace) ===============
   namespace :admin do
     # resources :events, except:[:index, :show]
