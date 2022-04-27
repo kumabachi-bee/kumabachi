@@ -10,6 +10,23 @@
   </head>
 
   <body>
+    <header>
+      <div>
+        <% if admin_signed_in? %>
+          管理者ログイン中
+          <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+        <% elsif member_signed_in? %>
+          会員ログイン中
+          <%= link_to "会員ログアウト", destroy_member_session_path, method: :delete %>
+        <% end %>
+      </div>
+      <%= link_to "管理者ログイン", new_admin_session_path %>
+      <%= link_to "会員登録", new_member_registration_path %>
+      <%= link_to "会員ログイン", new_member_session_path %>
+      <%= link_to "イベント登録", new_admin_event_path %>
+      <%= link_to "イベント一覧", events_path %>
+      <%= link_to "お問い合わせ", new_contact_path %>
+    </header>
     <%= yield %>
   </body>
 </html>
