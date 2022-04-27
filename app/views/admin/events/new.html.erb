@@ -1,9 +1,7 @@
-admin/events/new.html.erb
-
+admin/events/new.html.erb<br>
+イベント新規投稿フォーム<br>
 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-
-<!--新規投稿フォーム-->
-<%= form_with model: @event, local: true do |f| %>
+<%= form_with model: ([:admin, @event]), local: true do |f| %>
   <div><%= f.label :イベント開催日%></div>
   <div><%= f.date_field :date %></div>
 
@@ -17,7 +15,7 @@ admin/events/new.html.erb
   <div><%= f.text_field :title %></div>
 
   <div><%= f.label :イベント内容%></div>
-  <div><%= f.text_area :limit %></div>
+  <div><%= f.text_area :body %></div>
 
   <div><%= f.label :受付%></div>
   <div>
@@ -25,5 +23,5 @@ admin/events/new.html.erb
     <%= f.radio_button :is_available, "false" %>受付終了
   </div>
 
-  <div><%= f.submit '投稿' %></div>
+  <div><%= f.submit '送信', data: {confirm: "投稿"} %></div>
 <% end %>

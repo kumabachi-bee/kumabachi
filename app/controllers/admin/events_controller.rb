@@ -2,8 +2,11 @@ class Admin::EventsController < ApplicationController
   # --------------- 新規投稿機能 --------------
   def create
     @event = Event.new(event_params)
-    @event.save(event_params)
-    redirect_to events_path
+    if @event.save
+      redirect_to events_path
+    else
+      render 'new'
+    end
   end
 
   # --------------- 新規投稿ページ --------------
@@ -19,19 +22,15 @@ class Admin::EventsController < ApplicationController
   # --------------- 投稿編集機能 --------------
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
-    redirect_to event_path(@event)
-  end
-
-  # --------------- 投稿削除機能 --------------
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    redirect_to event_path(@event)
+    if @event.update(event_params)
+      redirect_to event_path(@event)
+    else
+      render 'edit'
+    end
   end
 
   # --------------- ストロングパラメータ --------------
   def event_params
-    params.require(:event).permit(date, limit, is_available, category, title, body)
+    params.require(:event).permit(:date, :limit, :category, :title, :body, :is_available)
   end
 end

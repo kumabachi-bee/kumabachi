@@ -1,1 +1,27 @@
-admin/events/edit.html.erb
+admin/events/edit.html.erb<br>
+投稿済みイベント編集ページ<br>
+
+<%= form_with model: ([:admin, @event]), local: true do |f| %>
+  <div><%= f.label :イベント開催日%></div>
+  <div><%= f.date_field :date %></div>
+
+  <div><%= f.label :受付人数%></div>
+  <div><%= f.number_field :limit, min: "1" %></div>
+
+  <div><%= f.label :カテゴリー%></div>
+  <div><%= f.select :category, Event.categories_i18n.invert, {prompt: "選択してください"} %></div>
+
+  <div><%= f.label :イベント名%></div>
+  <div><%= f.text_field :title %></div>
+
+  <div><%= f.label :イベント内容%></div>
+  <div><%= f.text_area :body %></div>
+
+  <div><%= f.label :受付%></div>
+  <div>
+    <%= f.radio_button :is_available, "true" %>受付中<span>　</span>
+    <%= f.radio_button :is_available, "false" %>受付終了
+  </div>
+
+  <div><%= f.submit '送信', data: {confirm: "投稿内容を編集します"} %></div>
+<% end %>

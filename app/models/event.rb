@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   # --------------- アソシエーション ---------------
-  has_many :reserves, dependent: :destroy
+  has_many :reserves
 
   # --------------- バリデーション ---------------
   validates :date, presence: true
