@@ -1,0 +1,50 @@
+/members/edit.html.erb
+顧客側　会員情報　編集画面
+
+<%= @member.name %>さん登録情報編集
+
+<%= form_with model:@member, url:member_path, local:true do |f| %>
+
+  <div class="field">
+    <%= f.label :"名前(性 / 名)" %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"名前(セイ / メイ)" %><br />
+    <%= f.text_field :name_kana %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"電話番号" %><br />
+    <%= f.text_field :tel %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  
+  <div class="field">
+    <%= f.label :"生年月日" %><br />
+    <%= f.date_select :birthday, start_year: (Time.now.year - 100), end_year: (Time.now.year - 15), default: Date.new(1990, 1, 1) %>
+  </div>
+  
+  <div class="field">
+    <%= f.radio_button :gender, :true %>
+    <%= f.label :gender, "男" %>
+    <%= f.radio_button :gender, :false %>
+    <%= f.label :gender, "女" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :メール配信を許可する%>
+    <%= f.check_box :is_mail_magazine, {checked: true}, "true", "false" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "編集を保存" %>
+  </div>
+  
+<% end %>

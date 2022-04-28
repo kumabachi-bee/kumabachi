@@ -1,0 +1,61 @@
+admin/members/show.html.erb<br />
+管理者側　会員の情報変更
+
+<%= @member.name %>さんマイページ
+<%= form_with model:@member, url:admin_member_path, local:true do |f| %>
+<table>
+  <tr>
+    <td>名前(性 / 名)</td>
+    <td><%= @member.name %></td>
+  </tr>
+  <tr>
+    <td>名前(セイ / メイ)</td>
+    <td><%= @member.name_kana %></td>
+  </tr>
+  <tr>
+    <td>性別</td>
+    <td>
+      <% if @member.gender == true %>
+        <p>男性</p>
+      <% else %>
+        <p>女性</p>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>生年月日</td>
+    <td><%= @member.birthday %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= @member.email %></td>
+  </tr>
+  <tr>
+    <td>電話番号</td>
+    <td><%= @member.tel %></td>
+  </tr>
+  <tr>
+    <td>メール配信可否</td>
+    <td>
+      <% if @member.is_mail_magazine == true %>
+        <p>受け取る</p>
+      <% else %>
+        <p>受け取らない</p>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>会員ステータス</td>
+    <td>
+      <%= f.radio_button :is_deleted, :false %>
+      <%= f.label :"有効" %>
+    </td>
+    <td>
+      <%= f.radio_button :is_deleted, :true %>
+      <%= f.label :"退会" %>
+    </td>
+    <td><%= f.submit "変更を保存" %></td>
+  </tr>
+</table>
+<% end %>
+
