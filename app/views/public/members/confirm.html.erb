@@ -1,0 +1,5 @@
+/members/confirm<br/>
+顧客側　退会確認<br/>
+
+<%= link_to "退会しない", member_path(@member) %>
+<%= link_to "退会する", member_withdraw_path(@member), method: :patch, data: {confilm: "本当に退会しますか？"} %>

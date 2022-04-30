@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_action :configure_permitted_parameters, if: :devise_controller?
   
   protected
+  
+  # ストロングパラメーター
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana, :gender, :birthday, :tel, :is_mail_magazine, :is_deleted])
+  end
   
   # ログイン後のリダイレクト先
   def after_sign_in_path_for(resource_or_scope)

@@ -1,0 +1,50 @@
+/admin/members/index.html.erb<br />
+管理者側 会員一覧ページ
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>名前(性 / 名)</th>
+      <th>名前(セイ / メイ)</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+      <th>生年月日</th>
+      <th>性別</th>
+      <th>メール配信可否</th>
+      <th>会員ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.name, admin_member_path(member.id) %></td>
+        <td><%= member.name_kana %></td>
+        <td><%= member.tel %></td>
+        <td><%= member.email %></td>
+        <td><%= member.birthday %></td>
+        <td>
+          <% if member.gender == true %>
+            <p>男性</p>
+          <% else %>
+            <p>女性</p>
+          <% end %>
+        </td>
+        <td>
+          <% if member.is_mail_magazine == true %>
+            <p>受け取る</p>
+          <% else %>
+            <p>受け取らない</p>
+          <% end %>
+        </td>
+        <td>
+          <% if member.is_deleted == true %>
+            <p>退会</p>
+          <% else %>
+            <p>有効</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

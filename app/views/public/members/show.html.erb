@@ -1,0 +1,52 @@
+/members/show.html.erb<br />
+顧客側　会員詳細ページ
+
+<%= @member.name %>さんマイページ<br />
+<%= link_to "編集する", edit_member_path(current_member) %>
+<%= link_to "退会する", member_confirm_path %>
+<table>
+  <tr>
+    <td>名前(性 / 名)</td>
+    <td><%= @member.name %></td>
+  </tr>
+  <tr>
+    <td>名前(セイ / メイ)</td>
+    <td><%= @member.name_kana %></td>
+  </tr>
+  <tr>
+    <td>性別</td>
+    <td>
+      <% if @member.gender == true %>
+        <p>男性</p>
+      <% else %>
+        <p>女性</p>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>生年月日</td>
+    <td><%= @member.birthday %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td><%= @member.email %></td>
+  </tr>
+  <tr>
+    <td>電話番号</td>
+    <td><%= @member.tel %></td>
+  </tr>
+  <tr>
+    <td>メール配信可否</td>
+    <td>
+      <% if @member.is_mail_magazine == true %>
+        <p>受け取る</p>
+      <% else %>
+        <p>受け取らない</p>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>会員ステータス</td>
+    <td><%= @member.is_deleted %></td>
+  </tr>
+</table>

@@ -1,0 +1,61 @@
+<h2>新規会員登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+  
+  <div class="field">
+    <%= f.label :"名前(性 / 名)" %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"名前(セイ / メイ)" %><br />
+    <%= f.text_field :name_kana %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"電話番号" %><br />
+    <%= f.text_field :tel %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"生年月日" %><br />
+    <%= f.date_select :birthday, start_year: (Time.now.year - 100), end_year: (Time.now.year - 15), default: Date.new(1990, 1, 1) %>
+  </div>
+  
+  <div class="field">
+    <%= f.radio_button :gender, :true %>
+    <%= f.label :gender, "男" %>
+    <%= f.radio_button :gender, :false %>
+    <%= f.label :gender, "女" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :メール配信を許可する%>
+    <%= f.check_box :is_mail_magazine, {checked: true}, "true", "false" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "会員登録" %>
+  </div>
+<% end %>
+
+<%= render "public/shared/links" %>
